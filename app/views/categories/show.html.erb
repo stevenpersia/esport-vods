@@ -1,0 +1,29 @@
+<!-- BANNER EVENT -->
+<div class="d-flex align-items-center p-3 my-3 text-white-50 bg-secondary rounded box-shadow">
+  <div class="lh-100">
+    <h6 class="mb-0 text-white lh-100"><%= @category.name %></h6>
+    <small>Tous les évènements liés à <%= @category.name %></small>
+  </div>
+</div>
+<!-- /BANNER EVENT -->
+
+<p id="notice"><%= notice %></p>
+
+<div class="row mb-2">
+  <% @events.each do |event| %>
+  <div class="col-md-6">
+    <div class="card flex-md-row mb-4 box-shadow h-md-250 border-0">
+      <div class="card-body d-flex flex-column align-items-start">
+        <strong class="d-inline-block mb-2 text-primary"><%= event.category.name %></strong>
+        <h3 class="mb-0">
+          <%= link_to(event_path(event), :class => 'text-dark') do %><%= event.name %><% end %>
+        </h3>
+        <div class="mb-1 text-muted"><%= event.subtitle %></div>
+        <p class="card-text mb-auto"><%= truncate event.description, length: 55 %></p>
+        <%= event.start.strftime("%e/%m/%Y") %> - <%= event.end.strftime("%e/%m/%Y") %>
+      </div>
+      <%= link_to event_path(event) do %><img class="card-img-right flex-auto d-none d-lg-block" src="<%= event.image %>" width="200" height="250" alt="<%= event.name %>"><% end %>
+    </div>
+  </div>
+  <% end %>
+</div>

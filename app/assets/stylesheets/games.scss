@@ -1,0 +1,278 @@
+// Place all the styles related to the games controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.stream::before {
+  content: url(asset-path("eye.png"));
+  padding-right: 5px;
+}
+
+#controls {
+
+  .play {
+    content: url(asset-path("video-controls/play.png"));
+    width: 36px;
+    height: 36px;
+  }
+
+  .play:hover {
+    content: url(asset-path("video-controls/play-hover.png"));
+    width: 36px;
+    height: 36px;
+  }
+
+  .pause {
+    content: url(asset-path("video-controls/pause.png"));
+    width: 36px;
+    height: 36px;
+  }
+
+  .pause:hover {
+    content: url(asset-path("video-controls/pause-hover.png"));
+    width: 36px;
+    height: 36px;
+  }
+
+  .mute {
+    content: url(asset-path("video-controls/mute.png"));
+    width: 36px;
+    height: 36px;
+  }
+
+  .mute:hover {
+    content: url(asset-path("video-controls/mute-hover.png"));
+    width: 36px;
+    height: 36px;
+  }
+
+  .unmute {
+    content: url(asset-path("video-controls/unmute.png"));
+    width: 36px;
+    height: 36px;
+  }
+
+  .unmute:hover {
+    content: url(asset-path("video-controls/unmute-hover.png"));
+    width: 36px;
+    height: 36px;
+  }
+
+  .quality-icon {
+    content: url(asset-path("video-controls/quality.png"));
+    width: 36px;
+    height: 36px;
+  }
+
+  .quality-icon:hover {
+    content: url(asset-path("video-controls/quality-hover.png"));
+    width: 36px;
+    height: 36px;
+  }
+
+  .speed-icon {
+    content: url(asset-path("video-controls/speed.png"));
+    width: 36px;
+    height: 36px;
+  }
+
+  .speed-icon:hover {
+    content: url(asset-path("video-controls/speed-hover.png"));
+    width: 36px;
+    height: 36px;
+  }
+
+  .fullscreen {
+    content: url(asset-path("video-controls/fullscreen.png"));
+    width: 36px;
+    height: 36px;
+  }
+
+  .fullscreen:hover {
+    content: url(asset-path("video-controls/fullscreen-hover.png"));
+    width: 36px;
+    height: 36px;
+  }
+
+  .s5back {
+    content: url(asset-path("video-controls/s5back.png"));
+    width: 36px;
+    height: 36px;
+  }
+
+  .s5back:hover {
+    content: url(asset-path("video-controls/s5back-hover.png"));
+    width: 36px;
+    height: 36px;
+  }
+
+  .s10back {
+    content: url(asset-path("video-controls/s10back.png"));
+    width: 36px;
+    height: 36px;
+  }
+
+  .s10back:hover {
+    content: url(asset-path("video-controls/s10back-hover.png"));
+    width: 36px;
+    height: 36px;
+  }
+
+  .s30back {
+    content: url(asset-path("video-controls/s30back.png"));
+    width: 36px;
+    height: 36px;
+  }
+
+  .s30back:hover {
+    content: url(asset-path("video-controls/s30back-hover.png"));
+    width: 36px;
+    height: 36px;
+  }
+
+  .s5forward {
+    content: url(asset-path("video-controls/s5forward.png"));
+    width: 36px;
+    height: 36px;
+  }
+
+  .s5forward:hover {
+    content: url(asset-path("video-controls/s5forward-hover.png"));
+    width: 36px;
+    height: 36px;
+  }
+
+  .s10forward {
+    content: url(asset-path("video-controls/s10forward.png"));
+    width: 36px;
+    height: 36px;
+  }
+
+  .s10forward:hover {
+    content: url(asset-path("video-controls/s10forward-hover.png"));
+    width: 36px;
+    height: 36px;
+  }
+
+  .s30forward {
+    content: url(asset-path("video-controls/s30forward.png"));
+    width: 36px;
+    height: 36px;
+  }
+
+  .s30forward:hover {
+    content: url(asset-path("video-controls/s30forward-hover.png"));
+    width: 36px;
+    height: 36px;
+  }
+
+}
+
+
+/* PAGE GAME VIDEO PLACEHOLDER */
+#video-placeholder {
+  max-width: 100%;
+  width: 100%;
+  top: 130px;
+  right: 40px;
+}
+
+#controls {
+}
+
+#progress-bar {
+  position: relative;
+  width: 100%;
+  height: 20px;
+  cursor: pointer;
+}
+
+
+#controls i {
+  cursor: pointer;
+}
+
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
+
+.speed-control, .quality-control, .volume-control {
+  margin-top: 5px;
+}
+
+.speed-control:hover #speed {
+  display: block;
+}
+
+#speed {
+  position: absolute;
+  margin-left: -11px;
+  margin-top: -63px;
+  display: none;
+}
+
+
+.quality-control:hover #quality {
+  display: block;
+}
+
+#quality {
+  position: absolute;
+  margin-left: -22px;
+  margin-top: -63px;
+  display: none;
+}
+
+.mute + #volume-input {
+  display: none !important;
+}
+
+.volume-control:hover #volume-input {
+  display: block;
+}
+
+#volume-input{
+  height: 70px;
+  width: 85px;
+  display: none;
+}
+
+input[type=range]{
+  -webkit-appearance: none;
+  -webkit-transform:rotate(-90deg);
+  position: absolute;
+  margin-top: -120px;;
+  margin-left: -23px;
+  background: transparent;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+  width: 300px;
+  height: 7px;
+  background: #FFF;
+  border-radius: 3px;
+  border: 1px solid #666;
+}
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  border: none;
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  background: #e74c3c;
+  margin-top: -5px;
+
+}
+
+input[type=range]:focus {
+  outline: none;
+}
+
+input[type=range]:focus::-webkit-slider-runnable-track {
+}

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ESPORT VOD <%= @title %></title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+<!-- COOKIES -->
+<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css" />
+<script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js"></script>
+<script>
+window.addEventListener("load", function(){
+window.cookieconsent.initialise({
+  "palette": {
+    "popup": {
+      "background": "#343a40"
+    },
+    "button": {
+      "background": "#ffffff"
+    }
+  },
+  "theme": "classic",
+  "position": "bottom-right",
+  "content": {
+    "message": "En poursuivant votre navigation sur ce site, vous acceptez l’utilisation de cookies.",
+    "dismiss": "Compris !",
+    "link": "En savoir plus"
+  }
+})});
+</script>
+
+  </head>
+
+  <body class="bg-light">
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-esport text-uppercase">
+    <%= link_to(root_path, :class => 'mr-3') do %><img data-src="holder.js/20x20?theme=thumb&bg=007bff&fg=007bff&size=1" class="rounded"><% end %>
+    <button class="navbar-toggler p-0 border-0" type="button" data-toggle="offcanvas">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="navbar-collapse offcanvas-collapse" id="offcanvas">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <li class="nav-item">
+            <%= link_to(root_path, :class => 'nav-link') do %>Accueil<% end %>
+          </li>
+          <%= link_to(favorite_index_path, :class => 'nav-link') do %>Nos coups de coeur<% end %>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://discord.gg/6WpBFgS" target="_blank">Rejoindre notre Discord</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Admin</a>
+          <div class="dropdown-menu">
+            <%= link_to(events_path, :class => 'dropdown-item') do %>Events<% end %>
+            <%= link_to(matches_path, :class => 'dropdown-item') do %>Matches<% end %>
+            <%= link_to(games_path, :class => 'dropdown-item') do %>Games<% end %>
+            <%= link_to(teams_path, :class => 'dropdown-item') do %>Teams<% end %>
+            <%= link_to(categories_path, :class => 'dropdown-item') do %>Categories<% end %>
+            <%= link_to(supports_path, :class => 'dropdown-item') do %>Supports<% end %>
+            <%= link_to(articles_path, :class => 'dropdown-item') do %>Articles<% end %>
+          </div>
+        </li>
+    </div>
+  </nav>
+
+  <%= render "layouts/submenu" unless @disable_nav %>
+
+  <main role="main" class="container">
+    <%= yield %>
+  </main>
+
+  <footer class="footer bg-dark">
+    <div class="container">
+        <span class="text-muted">ESPORT VOD © 2018 - <%= link_to(mentionslegales_path, :class => 'text-secondary') do %>Mentions Légales<% end %> - <%= link_to(cookies_path, :class => 'text-secondary') do %>Politique de gestion des cookies<% end %></span>
+      </div>
+  </footer>
+  <%= javascript_include_tag 'slick.min', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'offcanvas', 'data-turbolinks-track': 'reload' %>
+  </body>
+</html>

@@ -1,0 +1,44 @@
+// Place all the styles related to the events controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+/* MATCHES */
+.vod {
+  display: inline-block;
+}
+
+.vod small {
+  display: block;
+}
+
+.bg-grey {
+  background: rgba( 255, 255, 255, 0.6);
+}
+
+.match {
+  cursor: pointer;
+}
+
+.gamestart_yt::before {
+    content: url(asset-path("vod-type/youtube.png"));
+    width: 48px;
+    height: 48px;
+}
+
+.gamestart_yt:hover::before {
+    content: url(asset-path("vod-type/youtube-hover.png"));
+    width: 48px;
+    height: 48px;
+}
+
+.gamestart_tw::before {
+    content: url(asset-path("vod-type/twitch.png"));
+    width: 48px;
+    height: 48px;
+}
+
+.gamestart_tw:hover::before {
+    content: url(asset-path("vod-type/twitch-hover.png"));
+    width: 48px;
+    height: 48px;
+}

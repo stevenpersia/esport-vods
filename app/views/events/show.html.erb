@@ -1,0 +1,216 @@
+      <div class="d-flex align-items-center p-3 my-3 text-white-50 bg-secondary rounded box-shadow">
+        <img class="mr-3" src="<%= @event.logo %>" alt="" height="48">
+        <div class="lh-100">
+          <h6 class="mb-0 text-white lh-100"><%= @event.name %></h6>
+          <small><%= @event.subtitle %></small>
+        </div>
+        <div class="ml-auto text-right">
+          <h6 class="mb-0 text-white lh-100"><%= @event.category.name %></h6>
+          <small><%= @event.start.strftime("%e/%m/%Y") %> <% if @event.end.present? %>-<% else %><% end %> <%= @event.end.strftime("%e/%m/%Y") %></small>
+        </div>
+      </div>
+
+      <p id="notice"><%= notice %></p>
+
+      <% if @event.event_classic == true %>
+      <!-- EVENT CLASSIC -->
+      <!-- MATCH -->
+      <% if Match.where(event_id: @event.id).present? %>
+      <% Match.where(event_id: @event.id).each do |match| %>
+
+
+
+      <div class="d-flex justify-content-center align-items-center p-3 mb-2 bg-white text-dark rounded box-shadow match" style="overflow:hidden;" data-toggle="collapse" href="#match-<%= match.name %>-info" role="button" aria-expanded="false" aria-controls="match-<%= match.name %>-info">
+        <div class="lh-100 mr-auto" style="flex:1;">
+          <h6 class="mb-0 lh-100"><%= match.day %></h6>
+          <small><%= match.group %></small>
+        </div>
+        <% if match.spoil == true %>
+          <spoiler><div class="mb-0 lh-100 text-center" style="flex:1;"><img src="<%= asset_path 'fnatic.png' %>" width="24"> TEAM <%= match.team1 %> <small>vs</small> <%= match.team2 %>TEAM <img src="<%= asset_path 'mousesport.png' %>" width="24"></div></spoiler>
+          <% else %>
+          <div class="mb-0 lh-100 text-center" style="flex:1;"><img src="<%= asset_path 'fnatic.png' %>" width="24"> <%= match.team1 %> <small>vs</small> <%= match.team2 %> <img src="<%= asset_path 'mousesport.png' %>" width="24"></div>
+          <% end %>
+          <h6 class="mb-0 lh-100 ml-auto text-right" style="flex:1;">Best of <%= match.bestof %></h6>
+      </div>
+
+
+      <div class="collapse" id="match-<%= match.name %>-info">
+      <div class="d-flex flex-wrap justify-content-around">
+      <!-- GAME -->
+      <% match.games.each_with_index do |game, index| %>
+
+      <div class="col-md-3 p-3 mb-2 bg-grey text-dark rounded">
+        <div class="lh-100 text-center">
+        <h6 class="lh-100">Game 0<%= index+1 %></h6>
+
+        <% if game.gamestart_tw.empty? %>
+        <% elsif %>
+        <%= link_to((game_path(game, anchor: 'game-start')), :class => 'text-dark', :target => '_blank') do %><div class="vod gamestart_tw"><small>Game Start</small></div><% end %>
+        <% end %>
+
+        <% if game.gamestart_yt.empty? %>
+        <% elsif %>
+        <%= link_to((game_path(game, anchor: 'game-start')), :class => 'text-dark', :target => '_blank') do %><div class="vod gamestart_yt"><small>Game Start</small></div><% end %>
+        <% end %>
+        </div>
+      </div>
+
+      <% end %>
+      <!-- /GAME -->
+      </div>
+      </div>
+
+      <% end %>
+      <% else %>
+      <!-- NO VOD -->
+      <div class="d-flex justify-content-center align-items-center p-3 mb-2 bg-white text-dark rounded box-shadow">
+        <div class="lh-100 text-center">
+          <%= image_tag("my-brain-is-full-of-fuck.png", :alt => "My Brain is Full of Fuck") %>
+          <h2>Aucunes VODs disponibles</h2>
+          <p>Revenez un peu plus tard...</p>
+        </div>
+      </div>
+      <!-- /NO VOD -->
+      <% end %>
+      <!-- /MATCH -->
+      <!-- /EVENT CLASSIC -->
+      <% else %>
+      <% end %>
+
+      <% if @event.event_br == true %>
+      <!-- EVENT BR -->
+      <!-- MATCH -->
+      <% if Match.where(event_id: @event.id).present? %>
+      <% Match.where(event_id: @event.id).each do |match| %>
+
+      <div class="d-flex justify-content-center align-items-center p-3 mb-2 bg-white text-dark rounded box-shadow match" style="overflow:hidden;" data-toggle="collapse" href="#match-<%= match.name %>-info" role="button" aria-expanded="false" aria-controls="match-<%= match.name %>-info">
+        <div class="lh-100 mr-auto" style="flex:1;">
+          <h6 class="mb-0 lh-100"><%= match.day %></h6>
+          <small><%= match.group %></small>
+        </div>
+        <% if match.spoil == true %>
+          <spoiler><div class="mb-0 lh-100 text-center" style="flex:1;">CHACUN POUR SOI</div></spoiler>
+          <% else %>
+          <div class="mb-0 lh-100 text-center" style="flex:1;">CHACUN POUR SOI</div>
+          <% end %>
+          <h6 class="mb-0 lh-100 ml-auto text-right" style="flex:1;">Battle Royale</h6>
+      </div>
+
+
+      <div class="collapse" id="match-<%= match.name %>-info">
+      <div class="d-flex flex-wrap justify-content-around">
+      <!-- GAME -->
+      <% match.games.each_with_index do |game, index| %>
+
+      <div class="col-md-3 p-3 mb-2 bg-grey text-dark rounded">
+        <div class="lh-100 text-center">
+        <h6 class="lh-100">Game 0<%= index+1 %></h6>
+
+        <% if game.gamestart_tw.empty? %>
+        <% elsif %>
+        <%= link_to((game_path(game, anchor: 'game-start')), :class => 'text-dark', :target => '_blank') do %><div class="vod gamestart_tw"><small>Game Start</small></div><% end %>
+        <% end %>
+
+        <% if game.gamestart_yt.empty? %>
+        <% elsif %>
+        <%= link_to((game_path(game, anchor: 'game-start')), :class => 'text-dark', :target => '_blank') do %><div class="vod gamestart_yt"><small>Game Start</small></div><% end %>
+        <% end %>
+        </div>
+      </div>
+
+      <% end %>
+      <!-- /GAME -->
+      </div>
+      </div>
+
+      <% end %>
+      <% else %>
+      <!-- NO VOD -->
+      <div class="d-flex justify-content-center align-items-center p-3 mb-2 bg-white text-dark rounded box-shadow">
+        <div class="lh-100 text-center">
+          <%= image_tag("my-brain-is-full-of-fuck.png", :alt => "My Brain is Full of Fuck") %>
+          <h2>Aucunes VODs disponibles</h2>
+          <p>Revenez un peu plus tard...</p>
+        </div>
+      </div>
+      <!-- /NO VOD -->
+      <% end %>
+      <!-- /MATCH -->
+      <!-- /EVENT BR -->
+      <% else %>
+      <% end %>
+
+      <% if @event.event_special == true %>
+      <!-- EVENT SPECIAL -->
+      <!-- MATCH -->
+      <% if Match.where(event_id: @event.id).present? %>
+      <% Match.where(event_id: @event.id).each do |match| %>
+
+      <div class="d-flex justify-content-center align-items-center p-3 mb-2 bg-white text-dark rounded box-shadow match" style="overflow:hidden;" data-toggle="collapse" href="#match-<%= match.name %>-info" role="button" aria-expanded="false" aria-controls="match-<%= match.name %>-info">
+        <div class="lh-100 mr-auto" style="flex:1;">
+          <h6 class="mb-0 lh-100"><%= match.day %></h6>
+          <small><%= match.group %></small>
+        </div>
+        <% if match.spoil == true %>
+          <spoiler><div class="mb-0 lh-100 text-center" style="flex:1;"></div></spoiler>
+          <% else %>
+          <div class="mb-0 lh-100 text-center" style="flex:1;"></div>
+          <% end %>
+          <h6 class="mb-0 lh-100 ml-auto text-right" style="flex:1;">Cliquez pour voir</h6>
+      </div>
+
+
+      <div class="collapse" id="match-<%= match.name %>-info">
+      <div class="d-flex flex-wrap justify-content-around">
+      <!-- GAME -->
+      <% match.games.each_with_index do |game, index| %>
+
+      <div class="col-md-3 p-3 mb-2 bg-grey text-dark rounded">
+        <div class="lh-100 text-center">
+        <h6 class="lh-100">Game 0<%= index+1 %></h6>
+
+        <% if game.gamestart_tw.empty? %>
+        <% elsif %>
+        <%= link_to((game_path(game, anchor: 'game-start')), :class => 'text-dark', :target => '_blank') do %><div class="vod gamestart_tw"><small>Game Start</small></div><% end %>
+        <% end %>
+
+        <% if game.gamestart_yt.empty? %>
+        <% elsif %>
+        <%= link_to((game_path(game, anchor: 'game-start')), :class => 'text-dark', :target => '_blank') do %><div class="vod gamestart_yt"><small>Game Start</small></div><% end %>
+        <% end %>
+        </div>
+      </div>
+
+      <% end %>
+      <!-- /GAME -->
+      </div>
+      </div>
+
+      <% end %>
+      <% else %>
+      <!-- NO VOD -->
+      <div class="d-flex justify-content-center align-items-center p-3 mb-2 bg-white text-dark rounded box-shadow">
+        <div class="lh-100 text-center">
+          <%= image_tag("my-brain-is-full-of-fuck.png", :alt => "My Brain is Full of Fuck") %>
+          <h2>Aucunes VODs disponibles</h2>
+          <p>Revenez un peu plus tard...</p>
+        </div>
+      </div>
+      <!-- /NO VOD -->
+      <% end %>
+      <!-- /MATCH -->
+      <!-- /EVENT SPECIAL -->
+      <% else %>
+      <% end %>
+
+
+
+
+<!-- SPOILER ALERT -->
+<script>
+document.addEventListener("DOMContentLoaded", function(event) {
+spoilerAlert('spoiler');
+spoilerAlert('.spoiler', {max: 20, partial: 6});
+});
+</script>
+<!-- SPOILER ALERT -->

@@ -1,0 +1,10 @@
+# Ignore all logfiles and tempfiles.
+/log/*.log
+/tmp/
+
+/public/system/*
+/vendor/cache/
+
+# OS generated cache files
+Thumbs.db
+.DS_Store

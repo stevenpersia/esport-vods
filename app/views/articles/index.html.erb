@@ -1,0 +1,33 @@
+<% @title="- Liste des articles" %>
+
+<p id="notice"><%= notice %></p>
+
+<h2>Articles</h2> <%= link_to 'New Article', new_article_path %>
+
+<div class="table-responsive">
+<table class="table table-striped table-hover table-sm">
+  <thead class="thead-light">
+    <tr>
+      <th scope="col"></th>
+      <th scope="col">Title</th>
+      <th scope="col">Content</th>
+      <th scope="col">Link</th>
+      <th colspan="3">Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @articles.each do |article| %>
+      <tr>
+        <td><img src="<%= article.image %>" height="80"></td>
+        <td><%= article.title %></td>
+        <td><%= article.content %></td>
+        <td><a href="<%= article.link %>" target="_blank">Lien de l'article</a></td>
+        <td><%= link_to 'Voir', article %></td>
+        <td><%= link_to 'Modifier', edit_article_path(article) %></td>
+        <td><%= link_to 'Supprimer', article, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>

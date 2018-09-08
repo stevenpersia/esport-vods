@@ -1,0 +1,26 @@
+<%= form_with(model: team, local: true) do |form| %>
+  <% if team.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(team.errors.count, "error") %> prohibited this team from being saved:</h2>
+
+      <ul>
+      <% team.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group mt-4">
+  <%= form.text_field :name, {:class => 'form-control form-control-lg', :placeholder => "Nom de l'équipe / du joueur", :required => true }  %>
+  </div>
+
+  <div class="input-group mb-4">
+  <div class="input-group-prepend">
+    <label class="input-group-text">Logo</label>
+  </div>
+  <%= form.text_field :logo, {:class => 'form-control form-control-lg', :placeholder => "URL du logo de l'évènement", :required => true } %>
+  </div>
+
+  <%= form.submit 'Enregistrer', :class => 'btn btn-primary hand btn-lg btn-block mb-3' %>
+<% end %>

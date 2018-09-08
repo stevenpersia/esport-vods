@@ -1,0 +1,68 @@
+<%= form_with(model: match, local: true) do |form| %>
+  <% if match.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(match.errors.count, "error") %> prohibited this match from being saved:</h2>
+
+      <ul>
+      <% match.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group mt-4">
+  <%= form.text_field :name, {:class => 'form-control form-control-lg', :placeholder => "Nom du match", :required => true }  %>
+  <small class="form-text text-muted">
+  Ne pas insérer d'accents, de caractères spéciaux et d'espaces.
+  </small>
+  </div>
+
+  <div class="form-group">
+  <%= form.text_field :day, {:class => 'form-control form-control-lg', :placeholder => "Jour 01, Quart de final, ...", :required => true }  %>
+  </div>
+
+  <div class="form-group">
+  <%= form.text_field :group, {:class => 'form-control form-control-lg', :placeholder => "Groupe B, Playoffs, ...", :required => true }  %>
+  </div>
+
+  <div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <label class="input-group-text">Best of</label>
+  </div>
+  <%= form.text_field :bestof, {:class => 'form-control form-control-lg', :placeholder => "03, 05, ...", :required => true }  %>
+  </div>
+
+
+  <div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <label class="input-group-text">Team 1</label>
+  </div>
+  <%= form.select :team1, @teams, {}, {required: true, class: 'form-control form-control-lg custom-select'} %>
+  </div>
+
+  <div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <label class="input-group-text">Team 2</label>
+  </div>
+  <%= form.select :team2, @teams, {}, {required: true, class: 'form-control form-control-lg custom-select'} %>
+  </div>
+
+  <div class="input-group mb-4">
+  <div class="input-group-prepend">
+    <label class="input-group-text">Evènement</label>
+  </div>
+  <%= form.select :event_id, @events, {}, {required: true, class: 'form-control form-control-lg custom-select'} %>
+  </div>
+
+  <label>Anti-Spoil sur ce match ?</label>
+  <div class="form-check mb-4">
+    <%= form.check_box :spoil, {:class => 'form-check-input'} %>
+    <label class="form-check-label">Mettre un anti-spoil</label>
+    <small class="form-text text-muted">
+    Cocher pour activer l'anti-spoil sur ce match.
+    </small>
+  </div>
+
+  <%= form.submit 'Enregistrer', :class => 'btn btn-primary hand btn-lg btn-block mb-3' %>
+<% end %>

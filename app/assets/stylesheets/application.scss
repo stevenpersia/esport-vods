@@ -1,0 +1,96 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+ @import "bootstrap";
+
+
+ /* SUBMENU CATEGORIES */
+ .icon-starcraft-2::before {
+   content: url(asset-path("icons/starcraft-2.png"));
+   padding-right: 3px;
+   vertical-align: -2px;
+ }
+
+ .icon-overwatch::before {
+   content: url(asset-path("icons/overwatch.png"));
+   padding-right: 3px;
+   vertical-align: -2px;
+ }
+
+ .icon-dota-2::before {
+   content: url(asset-path("icons/dota-2.png"));
+   padding-right: 3px;
+   vertical-align: -2px;
+ }
+
+ .icon-overwatch::before {
+   content: url(asset-path("icons/overwatch.png"));
+   padding-right: 3px;
+   vertical-align: -2px;
+ }
+
+ .icon-autres::before {
+   content: url(asset-path("icons/autres.png"));
+   padding-right: 3px;
+   vertical-align: -2px;
+ }
+
+ .icon-cs-go::before {
+   content: url(asset-path("icons/cs-go.png"));
+   padding-right: 3px;
+   vertical-align: -2px;
+ }
+
+ .icon-heroes-of-the-storm::before {
+   content: url(asset-path("icons/heroes-of-the-storm.png"));
+   padding-right: 3px;
+   vertical-align: -2px;
+ }
+
+ .icon-rocket-league::before {
+   content: url(asset-path("icons/rocket-league.png"));
+   padding-right: 3px;
+   vertical-align: -2px;
+ }
+
+ .icon-league-of-legends::before {
+   content: url(asset-path("icons/league-of-legends.png"));
+   padding-right: 3px;
+   vertical-align: -2px;
+ }
+
+ .icon-darwin-project::before {
+   content: url(asset-path("icons/darwin-project.png"));
+   padding-right: 3px;
+   vertical-align: -2px;
+ }
+
+ .icon-pubg::before {
+   content: url(asset-path("icons/pubg.png"));
+   padding-right: 3px;
+   vertical-align: -2px;
+ }
+
+ .icon-fortnite::before {
+   content: url(asset-path("icons/fortnite.png"));
+   padding-right: 3px;
+   vertical-align: -2px;
+ }
+
+ .icon-battlerite::before {
+   content: url(asset-path("icons/battlerite.png"));
+   padding-right: 3px;
+   vertical-align: -2px;
+ }

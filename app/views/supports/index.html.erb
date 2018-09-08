@@ -1,0 +1,31 @@
+<% @title="- Liste des supports" %>
+
+<p id="notice"><%= notice %></p>
+
+<h2>Supports</h2> <%= link_to 'New Support', new_support_path %>
+
+<div class="table-responsive">
+<table class="table table-striped table-hover table-sm">
+  <thead class="thead-light">
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Subtitle</th>
+      <th scope="col">Link</th>
+      <th colspan="3">Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @supports.each do |support| %>
+      <tr>
+        <td><img src="<%= support.logo %>" widht="16" height="16"> <%= support.name %></td>
+        <td><%= support.subtitle %></td>
+        <td><%= support.link %></td>
+        <td><%= link_to 'Voir', support %></td>
+        <td><%= link_to 'Modifier', edit_support_path(support) %></td>
+        <td><%= link_to 'Supprimer', support, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>

@@ -1,0 +1,23 @@
+<div class="nav-scroller bg-white box-shadow">
+  <nav class="nav nav-underline submenu">
+    <% @categories.order(:name).each do |category| %>
+    <div class="cursor-p"><%= link_to(category_path(category), :class => 'nav-link cursor-p') do %><span class="icon-<%= category.slug %>"><%= category.name %></span><% end %></div>
+    <% end %>
+  </nav>
+</div>
+
+<script>
+$(document).ready(function(){
+  $('.submenu').slick({
+    infinite: true,
+    swipeToSlide: true,
+    arrows: true,
+    speed: 300,
+    autoplay: true,
+    autoplaySpeed: 2000,
+    centerMode: true,
+    variableWidth: true,
+    slidesToShow: 6
+  });
+});
+</script>

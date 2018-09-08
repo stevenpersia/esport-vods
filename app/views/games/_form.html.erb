@@ -1,0 +1,64 @@
+<%= form_with(model: game, local: true) do |form| %>
+  <% if game.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(game.errors.count, "error") %> prohibited this game from being saved:</h2>
+
+      <ul>
+      <% game.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group mt-4">
+  <%= form.text_field :name, {:class => 'form-control form-control-lg', :placeholder => "Nom de la game", :required => true }  %>
+  <small class="form-text text-muted">
+  Ajouter un nom explicite pour une meilleure identification.
+  </small>
+  </div>
+
+  <div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <label class="input-group-text">ID Youtube</label>
+  </div>
+  <%= form.text_field :gamestart_yt, {:class => 'form-control form-control-lg', :placeholder => "Ad22UGQKfpY" } %>
+  </div>
+
+  <div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <label class="input-group-text">ID Twitch</label>
+  </div>
+  <%= form.text_field :gamestart_tw, {:class => 'form-control form-control-lg', :placeholder => "232526885" } %>
+  </div>
+
+  <div class="input-group">
+  <div class="input-group-prepend">
+    <label class="input-group-text">Time Youtube</label>
+  </div>
+  <%= form.text_field :timeyt, {:class => 'form-control form-control-lg', :placeholder => "120" } %>
+  </div>
+  <small class="form-text text-muted">
+  A utiliser uniquement si c'est nécessaire.
+  </small>
+
+  <div class="input-group mb-3 mt-3">
+  <div class="input-group-prepend">
+    <label class="input-group-text">Match</label>
+  </div>
+  <%= form.select :match_id, @matches, {}, {required: true, class: 'form-control form-control-lg custom-select'} %>
+  </div>
+
+  <div class="form-group">
+  <%= form.text_field :namestream, {:class => 'form-control form-control-lg', :placeholder => "Nom du streamer", :required => true } %>
+  </div>
+
+  <div class="input-group mb-4">
+  <div class="input-group-prepend">
+    <label class="input-group-text">Lien du streamer</label>
+  </div>
+  <%= form.text_field :urlstream, {:class => 'form-control form-control-lg', :placeholder => "URL du site du streamer", :required => true } %>
+  </div>
+
+  <%= form.submit 'Enregistrer', :class => 'btn btn-primary hand btn-lg btn-block mb-3' %>
+<% end %>

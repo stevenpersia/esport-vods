@@ -1,0 +1,123 @@
+<!-- BANNER EVENT -->
+<div class="d-flex justify-content-center align-items-center p-3 my-3 bg-secondary rounded box-shadow" style="overflow:hidden;">
+<div class="lh-100 mr-auto" style="flex:1;">
+    <h6 class="mb-0 text-white lh-100">event</h6>
+    <small class="text-white-50">subtitle</small>
+  </div>
+  <div class="mb-0 lh-100 text-center text-white" style="flex:1;"><img src="<%= asset_path 'fnatic.png' %>" width="36"> Team 1 <small>vs</small> Team 2 <img src="<%= asset_path 'fnatic.png' %>" width="36"></div>
+  <h6 class="mb-0 lh-100 ml-auto text-right stream" style="flex:1;"><a href="<%= @game.urlstream %>" target="_blank" class="text-white"><%= @game.namestream %></a></h6>
+</div>
+<!-- /BANNER EVENT -->
+
+<p id="notice"><%= notice %></p>
+
+<% if @game.gamestart_tw.empty? %>
+<% elsif %>
+<!-- MAIN VOD VIDEO TWITCH-->
+<div id="game-start">
+<iframe
+    src="http://player.twitch.tv/?video=<%= @game.gamestart_tw %>&autoplay=false"
+    height="625px"
+    width="100%"
+    frameborder="0"
+    scrolling="0"
+    allowfullscreen="no">
+</iframe>
+</div>
+<!-- /MAIN VOD VIDEO TWITCH -->
+<% end %>
+
+<% if @game.gamestart_yt.empty? %>
+<% elsif %>
+<!-- MAIN VOD VIDEO YOUTUBE-->
+<div id="game-start">
+<div id="video-placeholder"></div>
+<script type="text/javascript">
+var player,
+    time_update_interval = 0;
+
+function onYouTubeIframeAPIReady() {
+    player = new YT.Player('video-placeholder', {
+        width: '100%',
+        height: '625px',
+        videoId: '<%= @game.gamestart_yt %>',
+        playerVars: {
+            start: '<%= @game.timeyt %>',
+            color: 'white',
+            controls: 0,
+            rel: 0,
+            showinfo: 0
+        },
+        events: {
+            onReady: initialize,
+        }
+    });
+}
+</script>
+<div id="controls" class="d-flex justify-content-between align-items-center p-3 mb-2 bg-white text-dark rounded box-shadow noselect">
+    <div class="volume-control">
+    <i id="mute-toggle" class="unmute"></i>
+    <input id="volume-input" type="range" max="100" min="0">
+    </div>
+    <div class="quality-control">
+    <i id="quality-icon" class="quality-icon"></i>
+    <select id="quality">
+        <option>small</option>
+        <option>medium</option>
+        <option selected="selected">large</option>
+        <option>hd720</option>
+        <option>hd1080</option>
+    <option>highres</option>
+    </select>
+    </div>
+    <i id="s30back" class="s30back"></i>
+    <i id="s10back" class="s10back"></i>
+    <i id="s5back" class="s5back"></i>
+    <i id="play" class="play"></i>
+    <i id="pause" class="pause"></i>
+    <i id="s5forward" class="s5forward"></i>
+    <i id="s10forward" class="s10forward"></i>
+    <i id="s30forward" class="s30forward"></i>
+    <div class="speed-control">
+    <i id="speed-icon" class="speed-icon"></i>
+    <select id="speed">
+        <option>0.25</option>
+        <option>0.5</option>
+        <option selected="selected">1</option>
+        <option>1.5</option>
+    <option>2</option>
+    </select>
+    </div>
+    <i id="fullscreen" class="fullscreen"></i>
+</div>
+</div>
+<!-- /MAIN VOD VIDEO YOUTUBE -->
+<% end %>
+
+
+
+
+<!-- SCRIPT IF IN FUTURE WE ADD PICK&BAN
+<script type="text/javascript">
+$(document).ready(function() {
+var hash = location.hash;
+var pickban = document.getElementById('pick-ban')
+var gamestart = document.getElementById('game-start')
+
+if (hash === '#pick-ban') {
+  gamestart.style.display = 'none'
+  pickban.style.display = 'block'
+  pickban.previousElementSibling.click()
+} else if (hash === '#game-start') {
+  pickban.style.display = 'none'
+  gamestart.style.display = 'block'
+  gamestart.previousElementSibling.click()
+}
+});
+</script>
+-->
+
+<!-- SCRIPT VIDEO PLAYER -->
+<script src="https://www.youtube.com/iframe_api"></script>
+<%= javascript_include_tag 'custom', 'data-turbolinks-track': 'reload' %>
+<!-- /SCRIPT VIDEO PLAYER -->

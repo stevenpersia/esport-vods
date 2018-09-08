@@ -1,0 +1,45 @@
+<% @articles.each do |article| %>
+<div class="jumbotron mt-3 p-3 p-md-5 text-white rounded" style="background:linear-gradient(285deg, transparent 26.47%, rgba(0, 0, 0, 1) 55.88%),url('<%= article.image %>');background-size:cover;background-position:center;background-repeat:no-repeat;">
+   <div class="col-md-6 px-0">
+     <h1 class="display-4 font-italic"><%= article.title %></h1>
+     <p class="lead my-3"><%= article.content %></p>
+     <p class="lead mb-0"><a href="<%= article.link %>" class="text-white font-weight-bold">En savoir plus</a></p>
+   </div>
+</div>
+<% end %>
+
+<% if @supports.name.present? %>
+<div class="d-flex justify-content-around align-items-center mb-4">
+  <% @supports.each do |support| %>
+  <div class="card bg-transparent text-center border-0">
+    <a href="<%= support.link %>" target="_blank"><img src="<%= support.logo %>" height="64" class="support"></a>
+  <div class="card-body">
+    <a href="<%= support.link %>" target="_blank" class="text-dark">
+    <h5 class="card-title text-black-50 mb-0"><%= support.name %></h5>
+    <small class="text-black-50"><%= support.subtitle %></small>
+    </a>
+  </div>
+  </div>
+  <% end %>
+</div>
+<% else %>
+<% end %>
+
+<div class="row mb-2">
+  <% @events.each do |event| %>
+  <div class="col-md-6">
+    <div class="card flex-md-row mb-4 box-shadow h-md-250 border-0">
+      <div class="card-body d-flex flex-column align-items-start">
+        <strong class="d-inline-block mb-2 text-primary"><%= event.category.name %></strong>
+        <h3 class="mb-0">
+          <%= link_to(event_path(event), :class => 'text-dark') do %><%= event.name %><% end %>
+        </h3>
+        <div class="mb-1 text-muted"><%= event.subtitle %></div>
+        <p class="card-text mb-auto"><%= truncate event.description, length: 55 %></p>
+        <%= event.start.strftime("%e/%m/%Y") %> <% if event.end.present? %>-<% else %><% end %> <%= event.end.strftime("%e/%m/%Y") %>
+      </div>
+      <%= link_to event_path(event) do %><img class="card-img-right flex-auto d-none d-lg-block" src="<%= event.image %>" width="200" height="250" alt="<%= event.name %>"><% end %>
+    </div>
+  </div>
+  <% end %>
+</div>
