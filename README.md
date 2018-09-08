@@ -1,4 +1,4 @@
-# YouTube Controller
+# E-sports VODs
 ![alt text](https://forthebadge.com/images/badges/made-with-ruby.svg "Made with Ruby")
 ![alt text](https://forthebadge.com/images/badges/contains-cat-gifs.svg "Contains cat gifs miaou")
 ![alt text](https://forthebadge.com/images/badges/built-with-resentment.svg "Built with resentment")
