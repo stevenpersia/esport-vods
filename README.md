@@ -5,7 +5,7 @@
 
 This application made under Ruby on Rails allows you to watch VODs of esports games without being spoiled with the custom YouTube player.
 
-A community app that is still under construction. You can find custom YouTube player on my other [repository](https://github.com/stevenpersia/youtube-player-controller).
+A community app that is still under construction. You can find custom YouTube player on my other [repository](https://github.com/stevenpersia/youtube-player-controller). This repository is not maintained anymore.
 
 ---
 
